@@ -32,7 +32,6 @@ class Url:
 
 	async def profile(self):
 		url = "https://twitter.com/{0.Username}".format(self.config)
-		print(url)
 		return url		
 	
 	async def search(self):
@@ -75,7 +74,6 @@ class Url:
 			self.config.Near = self.config.Near.replace(" ", "%20")
 			self.config.Near = self.config.Near.replace(",", "%2C")
 			url+= "%20near%3A{0.Near}".format(self.config)
-		print("URL: {0}".format(url))
 		return url
 
 async def Response(session, url):

@@ -93,7 +93,6 @@ class Search:
 		else:
 			while True:
 				if len(self.feed) > 0:
-					print("1")
 					await self.tweets()
 				else:
 					break 
