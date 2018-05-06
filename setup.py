@@ -5,11 +5,12 @@ import os
 import sys
 
 # Package meta-data
-NAME = 'twint'
+ORIGIN_NAME = 'twint'
+NAME = 'twinter'
 DESCRIPTION = 'An advanced Twitter scraping & OSINT tool.'
-URL = 'https://github.com/haccer/twint'
-EMAIL = 'codyzacharias@pm.me'
-AUTHOR = 'Cody Zacharias'
+URL = 'https://github.com/data-catalysis/twint'
+EMAIL = 'ducnguyen@usedata.vn'
+AUTHOR = 'Nguyen Cao'
 REQUIRES_PYTHON = '>=3.5.0'
 VERSION = None
 
@@ -26,7 +27,7 @@ with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
 # Load the package's __version__.py
 about = {}
 if not VERSION:
-	with open(os.path.join(here, NAME, '__version__.py')) as f:
+	with open(os.path.join(here, ORIGIN_NAME, '__version__.py')) as f:
 		exec(f.read(), about)
 else:
 	about['__version__'] = VERSION
