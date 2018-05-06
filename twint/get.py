@@ -29,6 +29,11 @@ class Url:
 		else:
 			url = "https://mobile.twitter.com/{0.Username}/following?cursor={1.init}".format(self.config, self)
 		return url
+
+	async def profile(self):
+		url = "https://twitter.com/{0.Username}".format(self.config)
+		print(url)
+		return url		
 	
 	async def search(self):
 		if self.init == -1:
@@ -70,6 +75,7 @@ class Url:
 			self.config.Near = self.config.Near.replace(" ", "%20")
 			self.config.Near = self.config.Near.replace(",", "%2C")
 			url+= "%20near%3A{0.Near}".format(self.config)
+		print("URL: {0}".format(url))
 		return url
 
 async def Response(session, url):

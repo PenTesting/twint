@@ -62,6 +62,7 @@ def initialize(args):
 	c.To = args.to
 	c.All = args.all
 	c.Debug = args.debug
+	c.Profile = args.profile
 	return c
 
 def options():
@@ -95,6 +96,7 @@ def options():
 	ap.add_argument("--followers", help="Scrape a person's followers", action="store_true")
 	ap.add_argument("--following", help="Scrape who a person follows.", action="store_true")
 	ap.add_argument("--favorites", help="Scrape Tweets a user has liked.", action="store_true")
+	ap.add_argument("--profile", help="User's Profile you want to scrape.", action="store_true")
 	ap.add_argument("--debug", help="Debug mode", action="store_true")
 	args = ap.parse_args()
 	return args
@@ -110,6 +112,8 @@ def main():
 		twint.Following(c)
 	elif args.followers:
 		twint.Followers(c)
+	elif args.profile:
+		twint.User(c)
 	else:
 		twint.Search(c)
 

@@ -28,3 +28,4 @@ class Config:
 	All = None
 	Debug = False
 	Format = None
+	Profile = None
