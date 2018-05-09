@@ -25,9 +25,6 @@ class User:
 		else:
 			self.conn = ""
 
-		loop = asyncio.get_event_loop()
-		loop.run_until_complete(self.main())
-
 	async def Profile(self):
 		connect = aiohttp.TCPConnector(verify_ssl=False)
 		async with aiohttp.ClientSession(connector=connect) as session:
@@ -37,6 +34,8 @@ class User:
 			self.profile = self.Info(response)
 		except:
 			pass
+		return self.profile
+		
 
 	def Info(self, response):
 		soup = BeautifulSoup(response, "html.parser")
@@ -62,7 +61,6 @@ class User:
 			"followers":int(followers),
 			"likes":int(favorites)
 		}
-		print(profile)
 		return profile
 
 	async def main(self):
