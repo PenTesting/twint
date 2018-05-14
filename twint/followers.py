@@ -19,8 +19,9 @@ class Followers:
 				print(str)
 				sys.exit(1)
 
-		loop = asyncio.get_event_loop() if config.loop is None else config.loop
-		loop.run_until_complete(self.main())
+		loop = asyncio.get_event_loop() if config.Loop is None else config.Loop
+		if self.config.Start:
+			loop.run_until_complete(self.main())
 	
 	async def Feed(self):
 		ua = {'User-Agent': 'Lynx/2.8.5rel.1 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/0.8.12'}

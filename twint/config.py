@@ -29,3 +29,4 @@ class Config:
 	Debug = False
 	Format = None
 	Profile = None
+	Start = None

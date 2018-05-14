@@ -576,7 +576,7 @@ async def getFavorites(init):
     count = 0
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_event_loop() if self.config.Loop is None else self.config.Loop
             futures = []
             for tweet in tweets:
                 count += 1

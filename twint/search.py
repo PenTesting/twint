@@ -34,8 +34,9 @@ class Search:
 			else:
 				self.config.Timedelta = (self.d._until - self.d._since).days
 
-		loop = asyncio.get_event_loop() if config.loop is None else config.loop
-		loop.run_until_complete(self.main())
+		loop = asyncio.get_event_loop() if config.Loop is None else config.Loop
+		if self.config.Start:
+			loop.run_until_complete(self.main())
 
 	async def Feed(self):
 		connect = aiohttp.TCPConnector(verify_ssl=False)
@@ -56,7 +57,7 @@ class Search:
 			if self.config.Location:
 				try:
 					with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-						loop = asyncio.get_event_loop()
+						loop = asyncio.get_event_loop() if self.config.Loop is None else self.config.Loop
 						futures = []
 						for tweet in self.feed:
 							self.count += 1
@@ -67,7 +68,7 @@ class Search:
 						await asyncio.gather(*futures)
 				except:
 					pass
-			else:   
+			else:
 				for tweet in self.feed:
 					self.count += 1
 					await output.Tweets(tweet, "", self.config, self.conn)

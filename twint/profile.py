@@ -25,8 +25,9 @@ class User:
 		else:
 			self.conn = ""
 
-		loop = asyncio.get_event_loop() if config.loop is None else config.loop
-		loop.run_until_complete(self.main())
+		loop = asyncio.get_event_loop() if config.Loop is None else config.Loop
+		if self.config.Start:
+			loop.run_until_complete(self.main())
 
 	async def Profile(self):
 		connect = aiohttp.TCPConnector(verify_ssl=False)

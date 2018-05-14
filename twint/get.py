@@ -74,6 +74,7 @@ class Url:
 			self.config.Near = self.config.Near.replace(" ", "%20")
 			self.config.Near = self.config.Near.replace(",", "%2C")
 			url+= "%20near%3A{0.Near}".format(self.config)
+		print(url)
 		return url
 
 async def Response(session, url):

@@ -63,6 +63,8 @@ def initialize(args):
 	c.All = args.all
 	c.Debug = args.debug
 	c.Profile = args.profile
+	c.Start = args.start
+	c.Loop = None
 	return c
 
 def options():
@@ -98,6 +100,7 @@ def options():
 	ap.add_argument("--favorites", help="Scrape Tweets a user has liked.", action="store_true")
 	ap.add_argument("--profile", help="User's Profile you want to scrape.", action="store_true")
 	ap.add_argument("--debug", help="Debug mode", action="store_true")
+	ap.add_argument("--start", help="Start main", action="store_true")
 	args = ap.parse_args()
 	return args
 
