@@ -30,3 +30,4 @@ class Config:
 	Format = None
 	Profile = None
 	Start = None
+	Print = None

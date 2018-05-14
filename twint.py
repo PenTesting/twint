@@ -64,6 +64,7 @@ def initialize(args):
 	c.Debug = args.debug
 	c.Profile = args.profile
 	c.Start = args.start
+	c.Print = args.print
 	c.Loop = None
 	return c
 
@@ -101,6 +102,7 @@ def options():
 	ap.add_argument("--profile", help="User's Profile you want to scrape.", action="store_true")
 	ap.add_argument("--debug", help="Debug mode", action="store_true")
 	ap.add_argument("--start", help="Start main", action="store_true")
+	ap.add_argument("--print", help="Print to command line", action="store_true")
 	args = ap.parse_args()
 	return args
 
