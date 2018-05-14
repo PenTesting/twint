@@ -84,6 +84,23 @@ def writeJSON(Tweet, file):
 		json.dump(data, json_file)
 		json_file.write("\n")
 
+def getJSON(Tweet):
+	data = {
+				"id": Tweet.id,
+				"date": Tweet.datestamp,
+				"time": Tweet.timestamp,
+				"timezone": Tweet.timezone,
+				"user_id": Tweet.user_id,
+				"username": Tweet.username,
+				"tweet": Tweet.tweet,
+				"replies": Tweet.replies,
+				"retweets": Tweet.retweets,
+				"likes": Tweet.likes,
+				"location": Tweet.location,
+				"hashtags": ",".join(Tweet.hashtags),
+				"link": Tweet.link}
+	return data
+
 def getDate(tweet):
 	datestamp = tweet.find("a", "tweet-timestamp")["title"]
 	datestamp = datestamp.rpartition(" - ")[-1]
