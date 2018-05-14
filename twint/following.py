@@ -30,6 +30,7 @@ class Following:
 			response = await get.Response(session, await get.Url(self.config,
 				self.init).following())
 		self.feed = []
+		self.users = []
 		try:
 			self.feed, self.init = feed.Follow(response)
 		except Exception as e:
@@ -46,6 +47,7 @@ class Following:
 			if self.config.Output != None:
 				output.write(User.name, self.config.Output)
 			
+			self.users.append(User)
 			self.count += 1
 			if self.config.Print:
 				print(User)

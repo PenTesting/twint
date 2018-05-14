@@ -9,6 +9,7 @@ class Followers:
 	def __init__(self, config):
 		self.init = -1
 		self.feed = [-1]
+		self.users = []
 		self.count = 0
 		self.config = config
 
@@ -30,6 +31,7 @@ class Followers:
 			response = await get.Response(session, await get.Url(self.config, 
 				self.init).followers())
 		self.feed = []
+		self.users = []
 		try:
 			self.feed, self.init = feed.Follow(response)
 		except:
@@ -46,6 +48,7 @@ class Followers:
 			if self.config.Output != None:
 				output.write(User.name, self.config.Output)
 			
+			self.users.append(User)
 			self.count += 1
 			if self.config.Print:
 				print(User)
