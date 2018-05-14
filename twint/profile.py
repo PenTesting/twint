@@ -39,7 +39,17 @@ class User:
 		except:
 			pass
 		return self.profile
-		
+
+	async def Profile(self, username):
+		connect = aiohttp.TCPConnector(verify_ssl=False)
+		async with aiohttp.ClientSession(connector=connect) as session:
+			response = await get.Response(session, await get.Url(self.config, self.init).profile(username))
+		self.profile = {}
+		try:
+			self.profile = self.Info(response)
+		except:
+			pass
+		return self.profile		
 
 	def Info(self, response):
 		soup = BeautifulSoup(response, "html.parser")

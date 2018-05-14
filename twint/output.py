@@ -167,8 +167,8 @@ def getTweet(tw, location, config):
 
 async def getUser(user, config):
 	u = User(config)
-	u.name = user.find("a")["name"]
-	return u
+	username = user.find("a")["name"]
+	return await u.Profile(username)
 
 async def Tweets(tw, location, config, conn):
 	copyright = tw.find("div", "StreamItemContent--withheld")

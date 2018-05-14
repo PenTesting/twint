@@ -32,7 +32,11 @@ class Url:
 
 	async def profile(self):
 		url = "https://twitter.com/{0.Username}".format(self.config)
-		return url		
+		return url
+
+	async def profile(self, username):
+		url = "https://twitter.com/{0}".format(username)
+		return url			
 	
 	async def search(self):
 		if self.init == -1:

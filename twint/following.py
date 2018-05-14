@@ -47,7 +47,8 @@ class Following:
 				output.write(User.name, self.config.Output)
 			
 			self.count += 1
-			print(User.name)
+			if self.config.Print:
+				print(User)
 
 	async def main(self):
 		if self.config.User_id is not None:
