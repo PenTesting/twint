@@ -165,8 +165,8 @@ def getTweet(tw, location, config):
 	t.link = "https://twitter.com/{0.username}/status/{0.id}/".format(t)
 	return t
 
-async def getUser(user):
-	u = User()
+async def getUser(user, config):
+	u = User(config)
 	u.name = user.find("a")["name"]
 	return u
 

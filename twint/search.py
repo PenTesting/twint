@@ -35,7 +35,7 @@ class Search:
 				self.config.Timedelta = (self.d._until - self.d._since).days
 
 		loop = asyncio.get_event_loop() if config.Loop is None else config.Loop
-		if self.config.Start:
+		if self.config.Start and not loop.is_running():
 			loop.run_until_complete(self.main())
 
 	async def Feed(self):

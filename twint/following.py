@@ -20,7 +20,7 @@ class Following:
 				sys.exit(1)
 		
 		loop = asyncio.get_event_loop() if config.Loop is None else config.Loop
-		if self.config.Start:
+		if self.config.Start and not loop.is_running():
 			loop.run_until_complete(self.main())
 
 	async def Feed(self):
@@ -39,7 +39,7 @@ class Following:
 	async def following(self):
 		await self.Feed()
 		for f in self.feed:
-			User = await output.getUser(f)
+			User = await output.getUser(f,self.config)
 			if self.config.Database:
 				db.following(self.conn, self.config.Username, User.name)
 
